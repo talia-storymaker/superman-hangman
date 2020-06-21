@@ -73,16 +73,14 @@ const app = new Vue({
     },
     methods: {
         guessLetter: function(event) {
-            let wordBeingGuessed = this.chosenWord.join('');
-            event.target.disabled = 'disabled';
             let caseInsensitiveLetter = new RegExp(event.target.value, 'i');
-            let searchForLetter = wordBeingGuessed.search(caseInsensitiveLetter);
-            if (searchForLetter === -1) {
-                console.log('fail');
-            } else {
-                this.wordWithBlanks[searchForLetter] = this.chosenWord[searchForLetter];
-                this.wordWithBlanksCurrent = this.wordWithBlanks.join('');            
+            for (let i=0; i < this.chosenWord.length; i++) {
+                if (caseInsensitiveLetter.test(this.chosenWord[i])) {
+                    this.wordWithBlanks[i] = this.chosenWord[i];
+                }
             }
+            event.target.disabled = 'disabled';
+            this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
         }
     },
     beforeMount() {
