@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Superman Hangman</title>
+	<meta charset="utf-8">
+    <meta name="viewport" width="device-width">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="letter-buttons">
+
+            <button v-on:click="guessLetter" value="a">A</button>
+            <button v-on:click="guessLetter" value="b">B</button>
+            <button v-on:click="guessLetter" value="c">C</button>
+            <button v-on:click="guessLetter" value="d">D</button>
+            <button v-on:click="guessLetter" value="e">E</button>
+            <button v-on:click="guessLetter" value="f">F</button>
+            <button v-on:click="guessLetter" value="g">G</button>
+            <button v-on:click="guessLetter" value="h">H</button>
+            <button v-on:click="guessLetter" value="i">I</button>
+            <button v-on:click="guessLetter" value="j">J</button>
+            <button v-on:click="guessLetter" value="k">K</button>
+            <button v-on:click="guessLetter" value="l">L</button>
+            <button v-on:click="guessLetter" value="m">M</button>
+            <button v-on:click="guessLetter" value="n">N</button>
+            <button v-on:click="guessLetter" value="o">O</button>
+            <button v-on:click="guessLetter" value="p">P</button>
+            <button v-on:click="guessLetter" value="q">Q</button>
+            <button v-on:click="guessLetter" value="r">R</button>
+            <button v-on:click="guessLetter" value="s">S</button>
+            <button v-on:click="guessLetter" value="t">T</button>
+            <button v-on:click="guessLetter" value="u">U</button>
+            <button v-on:click="guessLetter" value="v">V</button>
+            <button v-on:click="guessLetter" value="w">W</button>
+            <button v-on:click="guessLetter" value="x">X</button>
+            <button v-on:click="guessLetter" value="y">Y</button>
+            <button v-on:click="guessLetter" value="z">Z</button>
+
+        </div>
+
+        <div class="word" id="word">
+            {{ wordWithBlanksCurrent }}
+        </div>
+
+    </div>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>
