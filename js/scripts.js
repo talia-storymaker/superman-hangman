@@ -56,7 +56,10 @@ const app = new Vue({
                 'Doomsday',
                 'Brainiac'
             ],
-            wordWithBlanksCurrent: new String()
+            wordWithBlanksCurrent: new String(),
+            incorrectGuesses: 0,
+            winStatus: new String(),
+            gameRunning: true
         }
     },
     computed: {
@@ -78,16 +81,21 @@ const app = new Vue({
             for (let i = 0; i < this.chosenWord.length; i++) {
                 if (caseInsensitiveLetter.test(this.chosenWord[i])) {
                     this.wordWithBlanks[i] = this.chosenWord[i];
-                    lettersCorrectlyGuessed += 1;
+                    lettersCorrectlyGuessed++;
                 }
             }
             if (lettersCorrectlyGuessed === 0) {
-                console.log('fail');
+                this.incorrectGuesses++;
             }
             event.target.disabled = 'disabled';
             this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
             if (!this.wordWithBlanks.includes('_')) {
-                console.log('win');
+                this.winStatus = 'You won!';
+                this.gameRunning = false;
+            }
+            if (this.incorrectGuesses === 6) {
+                this.winStatus = 'You lose!';
+                this.gameRunning = false;
             }
         }
     },

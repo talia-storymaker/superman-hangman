@@ -11,7 +11,7 @@
 <body>
     <div id="app">
 
-        <div class="letter-buttons">
+        <div class="letter-buttons" v-if="gameRunning">
 
             <button v-on:click="guessLetter" value="a">A</button>
             <button v-on:click="guessLetter" value="b">B</button>
@@ -42,8 +42,12 @@
 
         </div>
 
-        <div class="word" id="word">
+        <div class="word">
             {{ wordWithBlanksCurrent }}
+        </div>
+
+        <div class="win-status">
+            {{ winStatus }}
         </div>
 
     </div>
