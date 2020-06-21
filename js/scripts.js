@@ -65,7 +65,7 @@ const app = new Vue({
         },
         wordWithBlanks: function() {
             let theWord = [];
-            for (let i=0; i < this.chosenWord.length; i++) {
+            for (let i = 0; i < this.chosenWord.length; i++) {
                 theWord[i] = '_';
             }
             return theWord;
@@ -74,10 +74,15 @@ const app = new Vue({
     methods: {
         guessLetter: function(event) {
             let caseInsensitiveLetter = new RegExp(event.target.value, 'i');
-            for (let i=0; i < this.chosenWord.length; i++) {
+            let lettersCorrectlyGuessed = 0;
+            for (let i = 0; i < this.chosenWord.length; i++) {
                 if (caseInsensitiveLetter.test(this.chosenWord[i])) {
                     this.wordWithBlanks[i] = this.chosenWord[i];
+                    lettersCorrectlyGuessed += 1;
                 }
+            }
+            if (lettersCorrectlyGuessed === 0) {
+                console.log('fail');
             }
             event.target.disabled = 'disabled';
             this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
