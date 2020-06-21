@@ -86,6 +86,9 @@ const app = new Vue({
             }
             event.target.disabled = 'disabled';
             this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
+            if (!this.wordWithBlanks.includes('_')) {
+                console.log('win');
+            }
         }
     },
     beforeMount() {
