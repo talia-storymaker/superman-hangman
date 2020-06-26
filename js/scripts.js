@@ -75,8 +75,8 @@ const app = new Vue({
         }
     },
     methods: {
-        guessLetter: function(event) {
-            let caseInsensitiveLetter = new RegExp(event.target.value, 'i');
+        guessLetter: function(letter) {
+            let caseInsensitiveLetter = new RegExp(letter, 'i');
             let lettersCorrectlyGuessed = 0;
             for (let i = 0; i < this.chosenWord.length; i++) {
                 if (caseInsensitiveLetter.test(this.chosenWord[i])) {
@@ -87,7 +87,7 @@ const app = new Vue({
             if (lettersCorrectlyGuessed === 0) {
                 this.incorrectGuesses++;
             }
-            event.target.disabled = 'disabled';
+            document.getElementById(letter).disabled = 'disabled';
             this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
             if (!this.wordWithBlanks.includes('_')) {
                 this.winStatus = 'You won!';
@@ -102,4 +102,8 @@ const app = new Vue({
     beforeMount() {
         this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
     }
+});
+
+document.addEventListener('keyup', function(event) {
+    app.guessLetter(event.key);
 });
