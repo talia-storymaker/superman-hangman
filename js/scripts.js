@@ -54,7 +54,10 @@ const app = new Vue({
                 'Sawyer',
                 'Henderson',
                 'Doomsday',
-                'Brainiac'
+                'Brainiac',
+                'Emil',
+                'Hamilton',
+                'Zod'
             ],
             wordWithBlanksCurrent: new String(),
             incorrectGuesses: 0,
