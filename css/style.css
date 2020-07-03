@@ -1,3 +1,37 @@
 .word {
     letter-spacing: 5px;
 }
+
+.sr-only {
+    color: rgba(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* hangman parts */
+
+.hangman-part {
+    position: absolute;
+}
+
+.head {
+    z-index: 4;
+}
+
+.noose {
+    z-index: 3;
+    filter: drop-shadow(0 0 7px lime);
+}
+
+.left-arm, .left-leg, .right-leg {
+    z-index: 2;
+}
+
+.body {
+    z-index: 1;
+}
+
+.right-arm {
+    z-index: 0;
+}

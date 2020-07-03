@@ -50,6 +50,20 @@
             {{ winStatus }}
         </div>
 
+        <div class="hangman-image">
+            <img src="images/0-noose.png" alt="Noose made of kryptonite" class="hangman-part noose">
+            <img src="images/1-head.png" alt="Superman's head" class="hangman-part head" v-if="incorrectGuesses >= 1">
+            <img src="images/2-body.png" alt="Superman's body" class="hangman-part body" v-if="incorrectGuesses >= 2">
+            <img src="images/3-leftarm.png" alt="Superman's left arm" class="hangman-part left-arm" v-if="incorrectGuesses >= 3">
+            <img src="images/4-rightarm.png" alt="Superman's right arm" class="hangman-part right-arm" v-if="incorrectGuesses >= 4">
+            <img src="images/5-leftleg.png" alt="Superman's left leg" class="hangman-part left-leg" v-if="incorrectGuesses >= 5">
+            <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6">
+        </div>
+
+        <div class="sr-only">
+            Incorrect Guesses: {{ incorrectGuesses }}
+        </div>
+
     </div>
     
     <script src="js/scripts.js"></script>
