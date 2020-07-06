@@ -17,6 +17,33 @@ $key-text-color: white;
 body {
     font-family: 'Segoe UI', Helvetica, sans-serif;
     background: #efefef;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.letter-buttons {
+    margin-bottom: 15px;
+}
+
+.word {
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.win-status {
+    margin-bottom: 15px;
+}
+
+.sr-only {
+    color: rgba(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
 }
 
 /* buttons */
@@ -25,8 +52,8 @@ button {
     border-radius: 50%;
     background: $key-background-color;
     border: 3px $key-border-color solid;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     color: $key-text-color;
     font-family: inherit;
     font-weight: bold;
@@ -42,22 +69,12 @@ button:disabled {
     color: $key-border-color;
 }
 
-
-.word {
-    letter-spacing: 5px;
-}
-
-.sr-only {
-    color: rgba(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-}
-
 /* hangman parts */
 
 .hangman-part {
     position: absolute;
+    left: 50%; 
+    transform: translateX(-50%) 
 }
 
 .head {
