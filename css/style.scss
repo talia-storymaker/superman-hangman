@@ -1,0 +1,82 @@
+/* variables */
+
+$key-background-color: black;
+$key-border-color: silver;
+$key-text-color: white;
+
+/* resets */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* general */
+
+body {
+    font-family: 'Segoe UI', Helvetica, sans-serif;
+    background: #efefef;
+}
+
+/* buttons */
+
+button {
+    border-radius: 50%;
+    background: $key-background-color;
+    border: 3px $key-border-color solid;
+    width: 30px;
+    height: 30px;
+    color: $key-text-color;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+button:hover:not(:disabled) {
+    background: scale-color($color: $key-background-color, $lightness: 25%);
+    border-color: scale-color($color: $key-border-color, $lightness: 25%);
+}
+
+button:disabled {
+    background: scale-color($color: $key-background-color, $lightness: 50%);
+    color: $key-border-color;
+}
+
+
+.word {
+    letter-spacing: 5px;
+}
+
+.sr-only {
+    color: rgba(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* hangman parts */
+
+.hangman-part {
+    position: absolute;
+}
+
+.head {
+    z-index: 4;
+}
+
+.noose {
+    z-index: 3;
+    filter: drop-shadow(0 0 7px lime);
+}
+
+.left-arm, .left-leg, .right-leg {
+    z-index: 2;
+}
+
+.body {
+    z-index: 1;
+}
+
+.right-arm {
+    z-index: 0;
+}
