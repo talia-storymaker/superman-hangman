@@ -57,6 +57,7 @@ button {
     color: $key-text-color;
     font-family: inherit;
     font-weight: bold;
+    margin: 3px;
 }
 
 button:hover:not(:disabled) {
