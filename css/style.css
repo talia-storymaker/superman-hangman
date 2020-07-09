@@ -18,7 +18,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.letter-buttons {
+.letter-.letter-buttons {
   margin-bottom: 15px;
 }
 
@@ -39,8 +39,8 @@ h1 {
   overflow: hidden;
 }
 
-/* buttons */
-button {
+/* letter buttons */
+.letter-button {
   border-radius: 50%;
   background: black;
   border: 3px silver solid;
@@ -52,14 +52,27 @@ button {
   margin: 3px;
 }
 
-button:hover:not(:disabled) {
+.letter-button:hover:not(:disabled) {
   background: #404040;
   border-color: #d0d0d0;
 }
 
-button:disabled {
+.letter-button:disabled {
   background: gray;
   color: silver;
+}
+
+/* other interactive features */
+.play-again-button {
+  background: lawngreen;
+  font-family: inherit;
+  border: 1px #57b000 solid;
+  padding: 5px 10px;
+}
+
+.play-again-button:hover {
+  background: #bdff7e;
+  border-color: #70e300;
 }
 
 /* hangman parts */

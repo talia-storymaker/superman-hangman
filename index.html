@@ -15,32 +15,32 @@
 
         <div class="letter-buttons" v-if="gameRunning">
 
-            <button v-on:click="guessLetter('a')" id="a">A</button>
-            <button v-on:click="guessLetter('b')" id="b">B</button>
-            <button v-on:click="guessLetter('c')" id="c">C</button>
-            <button v-on:click="guessLetter('d')" id="d">D</button>
-            <button v-on:click="guessLetter('e')" id="e">E</button>
-            <button v-on:click="guessLetter('f')" id="f">F</button>
-            <button v-on:click="guessLetter('g')" id="g">G</button>
-            <button v-on:click="guessLetter('h')" id="h">H</button>
-            <button v-on:click="guessLetter('i')" id="i">I</button>
-            <button v-on:click="guessLetter('j')" id="j">J</button>
-            <button v-on:click="guessLetter('k')" id="k">K</button>
-            <button v-on:click="guessLetter('l')" id="l">L</button>
-            <button v-on:click="guessLetter('m')" id="m">M</button>
-            <button v-on:click="guessLetter('n')" id="n">N</button>
-            <button v-on:click="guessLetter('o')" id="o">O</button>
-            <button v-on:click="guessLetter('p')" id="p">P</button>
-            <button v-on:click="guessLetter('q')" id="q">Q</button>
-            <button v-on:click="guessLetter('r')" id="r">R</button>
-            <button v-on:click="guessLetter('s')" id="s">S</button>
-            <button v-on:click="guessLetter('t')" id="t">T</button>
-            <button v-on:click="guessLetter('u')" id="u">U</button>
-            <button v-on:click="guessLetter('v')" id="v">V</button>
-            <button v-on:click="guessLetter('w')" id="w">W</button>
-            <button v-on:click="guessLetter('x')" id="x">X</button>
-            <button v-on:click="guessLetter('y')" id="y">Y</button>
-            <button v-on:click="guessLetter('z')" id="z">Z</button>
+            <button v-on:click="guessLetter('a')" id="a" class="letter-button">A</button>
+            <button v-on:click="guessLetter('b')" id="b" class="letter-button">B</button>
+            <button v-on:click="guessLetter('c')" id="c" class="letter-button">C</button>
+            <button v-on:click="guessLetter('d')" id="d" class="letter-button">D</button>
+            <button v-on:click="guessLetter('e')" id="e" class="letter-button">E</button>
+            <button v-on:click="guessLetter('f')" id="f" class="letter-button">F</button>
+            <button v-on:click="guessLetter('g')" id="g" class="letter-button">G</button>
+            <button v-on:click="guessLetter('h')" id="h" class="letter-button">H</button>
+            <button v-on:click="guessLetter('i')" id="i" class="letter-button">I</button>
+            <button v-on:click="guessLetter('j')" id="j" class="letter-button">J</button>
+            <button v-on:click="guessLetter('k')" id="k" class="letter-button">K</button>
+            <button v-on:click="guessLetter('l')" id="l" class="letter-button">L</button>
+            <button v-on:click="guessLetter('m')" id="m" class="letter-button">M</button>
+            <button v-on:click="guessLetter('n')" id="n" class="letter-button">N</button>
+            <button v-on:click="guessLetter('o')" id="o" class="letter-button">O</button>
+            <button v-on:click="guessLetter('p')" id="p" class="letter-button">P</button>
+            <button v-on:click="guessLetter('q')" id="q" class="letter-button">Q</button>
+            <button v-on:click="guessLetter('r')" id="r" class="letter-button">R</button>
+            <button v-on:click="guessLetter('s')" id="s" class="letter-button">S</button>
+            <button v-on:click="guessLetter('t')" id="t" class="letter-button">T</button>
+            <button v-on:click="guessLetter('u')" id="u" class="letter-button">U</button>
+            <button v-on:click="guessLetter('v')" id="v" class="letter-button">V</button>
+            <button v-on:click="guessLetter('w')" id="w" class="letter-button">W</button>
+            <button v-on:click="guessLetter('x')" id="x" class="letter-button">X</button>
+            <button v-on:click="guessLetter('y')" id="y" class="letter-button">Y</button>
+            <button v-on:click="guessLetter('z')" id="z" class="letter-button">Z</button>
 
         </div>
 
@@ -49,7 +49,7 @@
         </div>
 
         <div class="win-status">
-            {{ winStatus }}
+            {{ winStatus }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
         </div>
 
         <div class="hangman-image">

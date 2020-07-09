@@ -3,6 +3,7 @@
 $key-background-color: black;
 $key-border-color: silver;
 $key-text-color: white;
+$play-again-button-color: lawngreen;
 
 /* resets */
 
@@ -25,7 +26,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-.letter-buttons {
+.letter-.letter-buttons {
     margin-bottom: 15px;
 }
 
@@ -46,9 +47,9 @@ h1 {
     overflow: hidden;
 }
 
-/* buttons */
+/* letter buttons */
 
-button {
+.letter-button {
     border-radius: 50%;
     background: $key-background-color;
     border: 3px $key-border-color solid;
@@ -60,14 +61,28 @@ button {
     margin: 3px;
 }
 
-button:hover:not(:disabled) {
+.letter-button:hover:not(:disabled) {
     background: scale-color($color: $key-background-color, $lightness: 25%);
     border-color: scale-color($color: $key-border-color, $lightness: 25%);
 }
 
-button:disabled {
+.letter-button:disabled {
     background: scale-color($color: $key-background-color, $lightness: 50%);
     color: $key-border-color;
+}
+
+/* other interactive features */
+
+.play-again-button {
+    background: $play-again-button-color;
+    font-family: inherit;
+    border: 1px scale-color($color: $play-again-button-color, $lightness: -30%) solid;
+    padding: 5px 10px;
+}
+
+.play-again-button:hover {
+    background: scale-color($color: $play-again-button-color, $lightness: 50%);
+    border-color: scale-color($color: $play-again-button-color, $lightness: -10%);
 }
 
 /* hangman parts */

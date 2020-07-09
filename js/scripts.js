@@ -100,6 +100,9 @@ const app = new Vue({
                 this.winStatus = 'You lose!';
                 this.gameRunning = false;
             }
+        },
+        newGame: function() {
+            location.reload();
         }
     },
     beforeMount() {
