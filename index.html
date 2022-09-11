@@ -11,60 +11,95 @@
 <body>
     <div id="app">
 
-        <h1>Superman Hangman</h1>
+        <div class="settings" v-if="settingsShown">
 
-        <div class="letter-buttons" v-if="gameRunning">
+            <div class="settings-item">
+                <input type="checkbox" id="show-answer-on-loss" v-model="showAnswerOnLoss" />
+                <label for="show-answer-on-loss">Show answer when you lose</label>
+            </div>
 
-            <button v-on:click="guessLetter('a')" id="a" class="letter-button">A</button>
-            <button v-on:click="guessLetter('b')" id="b" class="letter-button">B</button>
-            <button v-on:click="guessLetter('c')" id="c" class="letter-button">C</button>
-            <button v-on:click="guessLetter('d')" id="d" class="letter-button">D</button>
-            <button v-on:click="guessLetter('e')" id="e" class="letter-button">E</button>
-            <button v-on:click="guessLetter('f')" id="f" class="letter-button">F</button>
-            <button v-on:click="guessLetter('g')" id="g" class="letter-button">G</button>
-            <button v-on:click="guessLetter('h')" id="h" class="letter-button">H</button>
-            <button v-on:click="guessLetter('i')" id="i" class="letter-button">I</button>
-            <button v-on:click="guessLetter('j')" id="j" class="letter-button">J</button>
-            <button v-on:click="guessLetter('k')" id="k" class="letter-button">K</button>
-            <button v-on:click="guessLetter('l')" id="l" class="letter-button">L</button>
-            <button v-on:click="guessLetter('m')" id="m" class="letter-button">M</button>
-            <button v-on:click="guessLetter('n')" id="n" class="letter-button">N</button>
-            <button v-on:click="guessLetter('o')" id="o" class="letter-button">O</button>
-            <button v-on:click="guessLetter('p')" id="p" class="letter-button">P</button>
-            <button v-on:click="guessLetter('q')" id="q" class="letter-button">Q</button>
-            <button v-on:click="guessLetter('r')" id="r" class="letter-button">R</button>
-            <button v-on:click="guessLetter('s')" id="s" class="letter-button">S</button>
-            <button v-on:click="guessLetter('t')" id="t" class="letter-button">T</button>
-            <button v-on:click="guessLetter('u')" id="u" class="letter-button">U</button>
-            <button v-on:click="guessLetter('v')" id="v" class="letter-button">V</button>
-            <button v-on:click="guessLetter('w')" id="w" class="letter-button">W</button>
-            <button v-on:click="guessLetter('x')" id="x" class="letter-button">X</button>
-            <button v-on:click="guessLetter('y')" id="y" class="letter-button">Y</button>
-            <button v-on:click="guessLetter('z')" id="z" class="letter-button">Z</button>
+            <div class="settings-item">
+                <input type="checkbox" id="include-easy-words" v-model="wordListInclusions.easyWords" />
+                <label for="include-easy-words">Include easy words</label>
+            </div>
+
+            <div class="settings-item">
+                <input type="checkbox" id="include-medium-words" v-model="wordListInclusions.mediumWords" />
+                <label for="include-medium-words">Include medium words</label>
+            </div>
+
+            <div class="settings-item">
+                <input type="checkbox" id="include-hard-words" v-model="wordListInclusions.hardWords" />
+                <label for="include-hard-words">Include hard words</label>
+            </div>
+
+            <p>You must refresh or finish the current game for changes to included words to take effect. If you do not choose for any words to be included, easy and medium will be included by default.</p>
 
         </div>
 
-        <div class="word">
-            {{ wordWithBlanksCurrent }}
-        </div>
+        <main>
 
-        <div class="win-status">
-            {{ winStatus }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
-        </div>
+            <button class="settings-button" v-on:click="settingsShown = !settingsShown">Settings</button>
 
-        <div class="hangman-image">
-            <img src="images/0-noose.png" alt="Noose made of kryptonite" class="hangman-part noose">
-            <img src="images/1-head.png" alt="Superman's head" class="hangman-part head" v-if="incorrectGuesses >= 1">
-            <img src="images/2-body.png" alt="Superman's body" class="hangman-part body" v-if="incorrectGuesses >= 2">
-            <img src="images/3-leftarm.png" alt="Superman's left arm" class="hangman-part left-arm" v-if="incorrectGuesses >= 3">
-            <img src="images/4-rightarm.png" alt="Superman's right arm" class="hangman-part right-arm" v-if="incorrectGuesses >= 4">
-            <img src="images/5-leftleg.png" alt="Superman's left leg" class="hangman-part left-leg" v-if="incorrectGuesses >= 5">
-            <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6">
-        </div>
+            <div class="game">
 
-        <div class="sr-only">
-            Incorrect Guesses: {{ incorrectGuesses }}
-        </div>
+                <h1>Superman<br class="mobile-only" /> Hangman</h1>
+
+                <div class="letter-buttons" v-if="gameRunning">
+
+                    <button v-on:click="guessLetter('a')" id="a" class="letter-button">A</button>
+                    <button v-on:click="guessLetter('b')" id="b" class="letter-button">B</button>
+                    <button v-on:click="guessLetter('c')" id="c" class="letter-button">C</button>
+                    <button v-on:click="guessLetter('d')" id="d" class="letter-button">D</button>
+                    <button v-on:click="guessLetter('e')" id="e" class="letter-button">E</button>
+                    <button v-on:click="guessLetter('f')" id="f" class="letter-button">F</button>
+                    <button v-on:click="guessLetter('g')" id="g" class="letter-button">G</button>
+                    <button v-on:click="guessLetter('h')" id="h" class="letter-button">H</button>
+                    <button v-on:click="guessLetter('i')" id="i" class="letter-button">I</button>
+                    <button v-on:click="guessLetter('j')" id="j" class="letter-button">J</button>
+                    <button v-on:click="guessLetter('k')" id="k" class="letter-button">K</button>
+                    <button v-on:click="guessLetter('l')" id="l" class="letter-button">L</button>
+                    <button v-on:click="guessLetter('m')" id="m" class="letter-button">M</button>
+                    <button v-on:click="guessLetter('n')" id="n" class="letter-button">N</button>
+                    <button v-on:click="guessLetter('o')" id="o" class="letter-button">O</button>
+                    <button v-on:click="guessLetter('p')" id="p" class="letter-button">P</button>
+                    <button v-on:click="guessLetter('q')" id="q" class="letter-button">Q</button>
+                    <button v-on:click="guessLetter('r')" id="r" class="letter-button">R</button>
+                    <button v-on:click="guessLetter('s')" id="s" class="letter-button">S</button>
+                    <button v-on:click="guessLetter('t')" id="t" class="letter-button">T</button>
+                    <button v-on:click="guessLetter('u')" id="u" class="letter-button">U</button>
+                    <button v-on:click="guessLetter('v')" id="v" class="letter-button">V</button>
+                    <button v-on:click="guessLetter('w')" id="w" class="letter-button">W</button>
+                    <button v-on:click="guessLetter('x')" id="x" class="letter-button">X</button>
+                    <button v-on:click="guessLetter('y')" id="y" class="letter-button">Y</button>
+                    <button v-on:click="guessLetter('z')" id="z" class="letter-button">Z</button>
+                    <button v-on:click="guessLetter('-')" id="-" class="letter-button">-</button>
+
+                </div>
+
+                <div class="word" v-html="wordWithBlanksCurrent"></div>
+
+                <div class="win-status">
+                    {{ winStatus }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
+                </div>
+
+                <div class="hangman-image">
+                    <img src="images/0-noose.png" alt="Noose made of kryptonite" class="hangman-part noose">
+                    <img src="images/1-head.png" alt="Superman's head" class="hangman-part head" v-if="incorrectGuesses >= 1">
+                    <img src="images/2-body.png" alt="Superman's body" class="hangman-part body" v-if="incorrectGuesses >= 2">
+                    <img src="images/3-leftarm.png" alt="Superman's left arm" class="hangman-part left-arm" v-if="incorrectGuesses >= 3">
+                    <img src="images/4-rightarm.png" alt="Superman's right arm" class="hangman-part right-arm" v-if="incorrectGuesses >= 4">
+                    <img src="images/5-leftleg.png" alt="Superman's left leg" class="hangman-part left-leg" v-if="incorrectGuesses >= 5">
+                    <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6">
+                </div>
+
+                <div class="sr-only">
+                    Incorrect Guesses: {{ incorrectGuesses }}
+                </div>
+
+            </div>
+
+        </main>
 
     </div>
     

@@ -4,6 +4,7 @@ $key-background-color: black;
 $key-border-color: silver;
 $key-text-color: white;
 $play-again-button-color: lawngreen;
+$settings-color: #1255BB;
 
 /* resets */
 
@@ -18,12 +19,19 @@ $play-again-button-color: lawngreen;
 body {
     font-family: 'Segoe UI', Helvetica, sans-serif;
     background: #efefef;
-    padding: 10px;
     text-align: center;
 }
 
 h1 {
     margin-bottom: 15px;
+}
+
+main {
+    position: relative;
+}
+
+.game {
+    padding: 10px;
 }
 
 .letter-.letter-buttons {
@@ -40,11 +48,21 @@ h1 {
     margin-bottom: 15px;
 }
 
+.not-guessed {
+    color: #f00;
+}
+
 .sr-only {
     color: rgba(0, 0, 0, 0);
     height: 1px;
     width: 1px;
     overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
 }
 
 /* letter buttons */
@@ -80,9 +98,52 @@ h1 {
     padding: 5px 10px;
 }
 
-.play-again-button:hover {
+.play-again-button:hover, .play-again-button:focus {
     background: scale-color($color: $play-again-button-color, $lightness: 50%);
     border-color: scale-color($color: $play-again-button-color, $lightness: -10%);
+}
+
+/* settings */
+
+.settings-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $settings-color;
+    color: #fff;
+    border-radius: 0;
+    border-bottom-right-radius: 1em;
+    border: 2px #fff;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1.1em;
+    transition: padding .15s;
+}
+
+.settings-button:hover {
+    padding-top: 14px;
+    padding-left: 14px;
+}
+
+.settings {
+    background: $settings-color;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    p {
+        margin-top: .5em;
+        font-size: .9em;
+    }
+    label {
+        display: inline-block;
+        margin-right: 2em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .settings-item {
+        display: inline-block;
+    }
 }
 
 /* hangman parts */
