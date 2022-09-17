@@ -80,7 +80,7 @@
                 <div class="word" v-html="wordWithBlanksCurrent"></div>
 
                 <div class="win-status">
-                    {{ winStatusText }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
+                    {{ winStatusText }} <span v-if="winStatus === 1 && incorrectGuesses > 0">You guessed an incorrect letter {{ incorrectGuesses }} times.</span><span v-if="winStatus === 1 && incorrectGuesses === 0">And you never guessed an incorrect letter!</span> <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
                 </div>
 
                 <div class="hangman-image">
