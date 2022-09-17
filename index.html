@@ -43,7 +43,7 @@
 
             <div class="game">
 
-                <h1>Superman<br class="mobile-only" /> Hangman</h1>
+                <h1><div><span>S</span>uperman</div><br class="mobile-only" /> <div><span>H</span>angman</div></h1>
 
                 <div class="letter-buttons" v-if="gameRunning">
 
@@ -80,17 +80,19 @@
                 <div class="word" v-html="wordWithBlanksCurrent"></div>
 
                 <div class="win-status">
-                    {{ winStatus }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
+                    {{ winStatusText }} <button class="play-again-button" v-if="gameRunning === false" v-on:click="newGame()">Play again</button>
                 </div>
 
                 <div class="hangman-image">
-                    <img src="images/0-noose.png" alt="Noose made of kryptonite" class="hangman-part noose">
-                    <img src="images/1-head.png" alt="Superman's head" class="hangman-part head" v-if="incorrectGuesses >= 1">
-                    <img src="images/2-body.png" alt="Superman's body" class="hangman-part body" v-if="incorrectGuesses >= 2">
-                    <img src="images/3-leftarm.png" alt="Superman's left arm" class="hangman-part left-arm" v-if="incorrectGuesses >= 3">
-                    <img src="images/4-rightarm.png" alt="Superman's right arm" class="hangman-part right-arm" v-if="incorrectGuesses >= 4">
-                    <img src="images/5-leftleg.png" alt="Superman's left leg" class="hangman-part left-leg" v-if="incorrectGuesses >= 5">
-                    <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6">
+                    <img src="images/0-noose.png" alt="Noose made of kryptonite" class="hangman-part noose" v-if="winStatus < 1">
+                    <img :src="headImage" alt="Superman's head" class="hangman-part head" v-if="incorrectGuesses >= 1 || winStatus === 1">
+                    <img src="images/2-body.png" alt="Superman's body" class="hangman-part body" v-if="incorrectGuesses >= 2 || winStatus === 1">
+                    <img src="images/3-leftarm.png" alt="Superman's left arm" class="hangman-part left-arm" v-if="incorrectGuesses >= 3 || winStatus === 1">
+                    <img src="images/4-rightarm.png" alt="Superman's right arm" class="hangman-part right-arm" v-if="incorrectGuesses >= 4 || winStatus === 1">
+                    <img src="images/5-leftleg.png" alt="Superman's left leg" class="hangman-part left-leg" v-if="incorrectGuesses >= 5 || winStatus === 1">
+                    <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6 || winStatus === 1">
+                    <img src="images/6-rightleg.png" alt="Superman's right leg" class="hangman-part right-leg" v-if="incorrectGuesses >= 6 || winStatus === 1">
+                    <img src="images/7-thanks.png" alt="A speech bubble coming from Superman with the text 'Thanks!' in it" class="hangman-part speech-bubble" v-if="winStatus === 1">
                 </div>
 
                 <div class="sr-only">

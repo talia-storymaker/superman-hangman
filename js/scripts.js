@@ -132,7 +132,7 @@ const app = new Vue({
             wordWithBlanks: '',
             wordWithBlanksCurrent: '',
             incorrectGuesses: 0,
-            winStatus: '',
+            winStatus: 0, // 0 = not completed, 1 = won, -1 = lost
             gameRunning: true,
             settingsShown: false,
             // Settings
@@ -142,6 +142,19 @@ const app = new Vue({
                 mediumWords: true,
                 hardWords: false
             }
+        }
+    },
+    computed: {
+        headImage() {
+            let supermanStatus = "sad";
+            if (this.winStatus === 1) { supermanStatus = "happy" };
+            if (this.winStatus === -1) { supermanStatus = "dead" };
+            return `images/1-head-${supermanStatus}.png`;
+        },
+        winStatusText() {
+            if (this.winStatus === 1) { return "You win!" };
+            if (this.winStatus === -1) { return "You lose" };
+            return "";
         }
     },
     watch: {
@@ -174,11 +187,11 @@ const app = new Vue({
                 document.getElementById(letter).disabled = 'disabled';
                 this.wordWithBlanksCurrent = this.wordWithBlanks.join('');
                 if (!this.wordWithBlanks.includes('_')) {
-                    this.winStatus = 'You won!';
+                    this.winStatus = 1;
                     this.gameRunning = false;
                 }
                 if (this.incorrectGuesses === 6) {
-                    this.winStatus = 'You lose!';
+                    this.winStatus = -1;
                     if (this.showAnswerOnLoss) {
                         let wordWithBlanksCurrentArray = this.wordWithBlanksCurrent.split("");
                         for (let i = 0; i < wordWithBlanksCurrentArray.length; i++) {
