@@ -112,6 +112,7 @@ main {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 1;
   background: #1255BB;
   color: #fff;
   border-radius: 0;
