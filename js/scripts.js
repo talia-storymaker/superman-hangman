@@ -128,7 +128,13 @@ const app = new Vue({
                 'Kong',
                 'Kenan',
                 'Winslow',
-                'Schott'
+                'Schott',
+                'Lora',
+                'Kal-L',
+                'Zor-L',
+                'Jor-L',
+                'Karen',
+                'Starr'
             ],
             hardWords: [
                 'Daxam',
@@ -167,7 +173,11 @@ const app = new Vue({
                 'Paul',
                 'Westfield',
                 'Jack',
-                'Nimball'
+                'Nimball',
+                'Casey',
+                'Adam',
+                'Jose',
+                'Delgado'
             ],
             chosenWord: '',
             wordWithBlanks: '',
